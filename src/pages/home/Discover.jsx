@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 // import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { getTopRated } from "../../api/actions/filmsActions";
+import { getDiscover } from "../../api/actions/filmsActions";
 
 // CAROUSEL SWIPER IMPORT
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -21,14 +21,14 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 
 const Home = () => {
-  const topRated = useSelector((state) => state.films.filmsTopRated);
+  const filmsDiscover = useSelector((state) => state.films.filmsDiscover);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getTopRated());
+    dispatch(getDiscover());
   }, [dispatch]);
 
-  if (topRated.length !== 0) {
+  if (filmsDiscover.length !== 0) {
     return (
       <Grid container component="section">
         <Typography
@@ -39,7 +39,7 @@ const Home = () => {
             fontSize: "2.5rem",
           }}
         >
-          Najlepiej oceniane
+          Odkrywaj
         </Typography>
         <Grid container>
           <Swiper
@@ -51,7 +51,7 @@ const Home = () => {
             autoplay
             lazy={true}
           >
-            {topRated.results.map((films) => {
+            {filmsDiscover.results.map((films) => {
               return (
                 <SwiperSlide key={films.id}>
                   <Card sx={{ maxWidth: 300 }}>
