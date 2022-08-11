@@ -1,0 +1,4 @@
+export const GET_TOP_RATED = "GET_TOP_RATED";
+export const GET_TOP_RATED_ERROR = "GET_TOP_RATED_ERROR";
+
+export const GET_DISCOVER = "GET_DISCOVER";

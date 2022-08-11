@@ -1,18 +1,19 @@
-import * as React from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import Grid from "@mui/material/Grid";
+import { styled } from '@mui/material/styles';
 
-function Home() {
+import TopRated from "./TopRated";
+
+const Main = styled(Grid)(({ theme }) => ({
+  padding: theme.spacing(3),
+}));
+
+const Home = () => {
   return (
-    <>
-      <main>
-        <h2>Welcome to the homepage!</h2>
-        <p>You can do this, I believe in you.</p>
-      </main>
-      <nav>
-        <Link to="/about">About</Link>
-      </nav>
-    </>
+    <Main container component="main">
+      <TopRated />
+    </Main>
   );
-}
+};
 
 export default Home;

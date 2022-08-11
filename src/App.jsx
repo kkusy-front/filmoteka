@@ -7,6 +7,7 @@ import "./App.css";
 
 //import components
 import AppMenu from "./components/AppMenu";
+import Footer from "./components/Footer";
 
 //import PAGES
 import Home from "./pages/home/index";
@@ -38,12 +39,14 @@ const App = () => {
       <CssBaseline />
       <div className="App">
         <AppMenu colorChangeSetter={changeColorMode} />
-        <h1>Welcome to React Router!</h1>
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="about" element={<About />} />
         </Routes>
+
+        <Footer />
       </div>
     </ThemeProvider>
   );
