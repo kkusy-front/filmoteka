@@ -32,16 +32,21 @@ export default function BasicTextFields() {
   const [search, setSearch] = useState("");
   const [visible, setVisible] = useState(false);
 
-  const onTextChange = (e) => {
+
+  const handleGetSearch = (query) => {
+    dispatch(getSearch(query));
+  };
+
+  function onTextChange(e) {
     setSearch(e.target.value);
 
-    if (e.target.value.length > 0) {
+    if (search.length > 0) {
       setVisible(true);
-      debounce(dispatch(getSearch(e.target.value)), 2000);
+      handleGetSearch(e.target.value)
     } else {
       setVisible(false);
     }
-  };
+  }
 
   const handleShow = (currentRef) => {
     if (search.length > 0) {
@@ -57,7 +62,6 @@ export default function BasicTextFields() {
     }
   };
 
-  console.log(Object.keys(searchList).length === 0)
   return (
     <>
       <Box
@@ -86,7 +90,7 @@ export default function BasicTextFields() {
             {Object.keys(searchList).length !== 0
               ? searchList.results.map((films) => {
                   return (
-                    <Grid xs={3} key={films.id}>
+                    <Grid item xs={3} key={films.id}>
                       <Card sx={{ maxWidth: 250 }}>
                         <CardMedia
                           component="img"
