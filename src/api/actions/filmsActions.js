@@ -1,4 +1,4 @@
-import { GET_TOP_RATED, GET_TOP_RATED_ERROR, GET_DISCOVER, GET_DISCOVER_ERROR } from "../types";
+import { GET_TOP_RATED, GET_TOP_RATED_ERROR, GET_DISCOVER, GET_DISCOVER_ERROR, GET_SEARCH_LIST, GET_SEARCH_LIST_ERROR } from "../types";
 import axios from "axios";
 
 const api = "https://api.themoviedb.org/3";
@@ -30,6 +30,21 @@ export const getDiscover = () => async (dispatch) => {
     } catch (e) {
       dispatch({
         type: GET_DISCOVER_ERROR,
+        payload: console.log(e),
+      });
+    }
+  };
+
+  export const getSearch = (search) => async (dispatch) => {
+    try {
+      const res = await axios.get(`${api}/search/movie?query=${search}&api_key=${api_key}&language=pl-PL`);
+      dispatch({
+        type: GET_SEARCH_LIST,
+        payload: res.data,
+      });
+    } catch (e) {
+      dispatch({
+        type: GET_SEARCH_LIST_ERROR,
         payload: console.log(e),
       });
     }

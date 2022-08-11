@@ -35,6 +35,7 @@ const Home = () => {
           variant="h2"
           sx={{
             mb: 3,
+            mt: 3,
             fontWeight: 700,
             fontSize: "2.5rem",
           }}
