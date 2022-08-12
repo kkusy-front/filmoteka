@@ -4,6 +4,7 @@ import { debounce } from "lodash";
 import { useSelector, useDispatch } from "react-redux";
 import { getSearch } from "../api/actions/filmsActions";
 
+import CardFilm from "./CardFilm";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { styled } from "@mui/material/styles";
@@ -20,7 +21,7 @@ const SearchContainer = styled(Box)(({ theme }) => ({
   right: 0,
   width: "70%",
   height: "auto",
-  backgroundColor: "rgba(97, 97, 97, 0.8)",
+  backgroundColor: "rgba(97, 97, 97, 0.9)",
   zIndex: 999,
   boxShadow: 4,
 }));
@@ -32,7 +33,6 @@ export default function BasicTextFields() {
   const [search, setSearch] = useState("");
   const [visible, setVisible] = useState(false);
 
-
   const handleGetSearch = (query) => {
     dispatch(getSearch(query));
   };
@@ -42,7 +42,7 @@ export default function BasicTextFields() {
 
     if (search.length > 0) {
       setVisible(true);
-      handleGetSearch(e.target.value)
+      handleGetSearch(e.target.value);
     } else {
       setVisible(false);
     }
@@ -88,32 +88,10 @@ export default function BasicTextFields() {
         <SearchContainer>
           <Grid container>
             {Object.keys(searchList).length !== 0
-              ? searchList.results.map((films) => {
+              ? searchList.results.slice(0, 8).map((films) => {
                   return (
                     <Grid item xs={3} key={films.id}>
-                      <Card sx={{ maxWidth: 250 }}>
-                        <CardMedia
-                          component="img"
-                          height="200"
-                          image={
-                            "https://image.tmdb.org/t/p/w500" +
-                            films.poster_path
-                          }
-                          alt={films.title}
-                        />
-                        <CardContent>
-                          <Typography
-                            gutterBottom
-                            variant="h6"
-                            component="span"
-                          >
-                            {films.title}
-                          </Typography>
-                        </CardContent>
-                        <CardActions>
-                          <Button size="small">Zobacz więcej</Button>
-                        </CardActions>
-                      </Card>
+                      <CardFilm props={films} styled={{ maxWidth: 250, mb: 3 }} imgH="200" />
                     </Grid>
                   );
                 })

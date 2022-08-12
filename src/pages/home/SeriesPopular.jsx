@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 // import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { getDiscover } from "../../api/actions/filmsActions";
+import { getPopular } from "../../api/actions/seriesActions";
 
 // CAROUSEL SWIPER IMPORT
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -17,11 +17,11 @@ import Typography from "@mui/material/Typography";
 import CardFilm from "../../components/CardFilm";
 
 const Home = () => {
-  const filmsDiscover = useSelector((state) => state.films.filmsDiscover);
+  const filmsDiscover = useSelector((state) => state.series.seriesPopular);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getDiscover());
+    dispatch(getPopular());
   }, [dispatch]);
 
   if (filmsDiscover.length !== 0) {
@@ -36,7 +36,7 @@ const Home = () => {
             fontSize: "2.5rem",
           }}
         >
-          Odkrywaj filmy
+          Popularne programy telewizyjne
         </Typography>
         <Grid container>
           <Swiper
@@ -46,9 +46,9 @@ const Home = () => {
             loop={true}
             navigation
             autoplay={{
-              delay: 1900,
-              disableOnInteraction: false,
-            }}
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
             lazy={true}
           >
             {filmsDiscover.results.map((films) => {

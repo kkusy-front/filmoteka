@@ -49,7 +49,10 @@ const Home = () => {
             modules={[Autoplay, Navigation, Lazy]}
             loop={true}
             navigation
-            autoplay
+            autoplay={{
+              delay: 2300,
+              disableOnInteraction: false,
+            }}
             lazy={true}
           >
             {topRated.results.map((films) => {

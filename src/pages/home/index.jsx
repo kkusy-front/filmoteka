@@ -5,6 +5,7 @@ import { styled } from "@mui/material/styles";
 
 import TopRated from "./TopRated";
 import Discover from "./Discover";
+import SeriesPopular from "./SeriesPopular"
 
 const Main = styled(Grid)(({ theme }) => ({
   padding: theme.spacing(3),
@@ -16,6 +17,7 @@ const Home = () => {
       <Container fixed>
         <TopRated />
         <Discover />
+        <SeriesPopular />
       </Container>
     </Main>
   );
