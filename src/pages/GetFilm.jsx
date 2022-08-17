@@ -106,7 +106,7 @@ export default function GetFilm() {
                       fontSize: "1rem",
                     }}
                   >
-                    {filmByID.overview}
+                   <span style={{ fontWeight: "bold" }}>Opis:</span>{" "} {filmByID.overview}
                   </Typography>
                 </Grid>
               </Grid>
