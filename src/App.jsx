@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 //import PAGES
 import Home from "./pages/home/index";
 import About from "./pages/about/index";
+import GetFilm from "./pages/GetFilm";
 
 const App = () => {
   const [colorMode, setColorMode] = React.useState("dark");
@@ -44,6 +45,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="about" element={<About />} />
+          <Route path="film/:id" element={<GetFilm />} />
         </Routes>
 
         <Footer />

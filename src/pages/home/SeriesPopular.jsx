@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-// import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getPopular } from "../../api/actions/seriesActions";
@@ -17,14 +16,14 @@ import Typography from "@mui/material/Typography";
 import CardFilm from "../../components/CardFilm";
 
 const Home = () => {
-  const filmsDiscover = useSelector((state) => state.series.seriesPopular);
+  const seriesPopular = useSelector((state) => state.series.seriesPopular);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getPopular());
   }, [dispatch]);
 
-  if (filmsDiscover.length !== 0) {
+  if (seriesPopular.length !== 0) {
     return (
       <Grid container component="section">
         <Typography
@@ -51,7 +50,7 @@ const Home = () => {
               }}
             lazy={true}
           >
-            {filmsDiscover.results.map((films) => {
+            {seriesPopular.results.map((films) => {
               return (
                 <SwiperSlide key={films.id}>
                   <CardFilm props={films} styled={{ maxWidth: 300 }} imgH="400" />

@@ -14,12 +14,7 @@ import { Autoplay, Navigation, Lazy } from "swiper";
 
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
+import CardFilm from "../../components/CardFilm";
 
 const Home = () => {
   const topRated = useSelector((state) => state.films.filmsTopRated);
@@ -58,42 +53,7 @@ const Home = () => {
             {topRated.results.map((films) => {
               return (
                 <SwiperSlide key={films.id}>
-                  <Card>
-                    <CardMedia
-                      component="img"
-                      height="400"
-                      image={
-                        "https://image.tmdb.org/t/p/w500" + films.poster_path
-                      }
-                      alt={films.title}
-                    />
-                    <Box
-                      sx={{
-                        width: 50,
-                        height: 50,
-                        borderRadius: 100,
-                        position: "absolute",
-                        backgroundColor: "primary.dark",
-                        right: 10,
-                        top: 10,
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        boxShadow: 4,
-                        color: "#ffffff",
-                      }}
-                    >
-                      {films.vote_average}
-                    </Box>
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
-                        {films.title}
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      <Button size="small">Zobacz więcej</Button>
-                    </CardActions>
-                  </Card>
+                  <CardFilm props={films} styled={{ maxWidth: 300 }} imgH="400" rated />
                 </SwiperSlide>
               );
             })}

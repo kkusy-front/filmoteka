@@ -1,9 +1,10 @@
-import { GET_TOP_RATED, GET_DISCOVER, GET_SEARCH_LIST } from "../types";
+import { GET_TOP_RATED, GET_DISCOVER, GET_SEARCH_LIST, GET_BY_ID } from "../types";
 
 const initalState = {
   filmsTopRated: [],
   filmsDiscover: [],
   searchList: [],
+  filmByID: [],
   loading: true,
 };
 
@@ -25,6 +26,12 @@ export default function filmsReducer(state = initalState, action) {
       return {
         ...state,
         searchList: action.payload,
+        loading: false,
+      };
+      case GET_BY_ID:
+      return {
+        ...state,
+        filmByID: action.payload,
         loading: false,
       };
     default:
