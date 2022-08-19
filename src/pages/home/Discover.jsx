@@ -49,11 +49,32 @@ const Home = () => {
               disableOnInteraction: false,
             }}
             lazy={true}
+            breakpoints={{
+              // when window width is >= 320px
+              320: {
+                slidesPerView: 1,
+                spaceBetween: 0,
+              },
+              // when window width is >= 640px
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              // when window width is >= 1040px
+              1040: {
+                slidesPerView: 4,
+                spaceBetween: 50,
+              },
+            }}
           >
             {filmsDiscover.results.map((films) => {
               return (
                 <SwiperSlide key={films.id}>
-                  <CardFilm props={films} styled={{ maxWidth: 300 }} imgH="400" />
+                  <CardFilm
+                    props={films}
+                    styled={{ maxWidth: 300 }}
+                    imgH="400"
+                  />
                 </SwiperSlide>
               );
             })}
@@ -62,8 +83,7 @@ const Home = () => {
       </Grid>
     );
   } else {
-    <>
-    </>;
+    <></>;
   }
 };
 

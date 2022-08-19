@@ -10,13 +10,21 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 
 export default function CardFilm({ props, styled, imgH, rated }) {
+  const checkIMG = (image) => {
+    if (image === null) {
+      return `https://via.placeholder.com/500`;
+    } else {
+      return `https://image.tmdb.org/t/p/w500${image}`;
+    }
+  };
+
   return (
     <Link to={`film/${props.id}`}>
       <Card sx={styled}>
         <CardMedia
           component="img"
           height={imgH}
-          image={"https://image.tmdb.org/t/p/w500" + props.poster_path}
+          image={checkIMG(props.poster_path)}
           alt={props.title}
         />
         {rated === true ? (

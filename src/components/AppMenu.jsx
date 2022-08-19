@@ -62,7 +62,7 @@ const AppMenu = (colorChangeSetter) => {
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
-              aria-label="account of current user"
+              aria-label="główne menu"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
@@ -100,25 +100,10 @@ const AppMenu = (colorChangeSetter) => {
               ))}
             </Menu>
           </Box>
-          <LiveTvIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Filometka
-          </Typography>
+          <Box sx={{ flexGrow: 0, display: { xs: "flex", md: "none" } }}>
+            <DarkLightMode colorChangeSetter={colorChangeSetter} />
+          </Box>
+
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
@@ -133,7 +118,7 @@ const AppMenu = (colorChangeSetter) => {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
             <DarkLightMode colorChangeSetter={colorChangeSetter} />
           </Box>
 

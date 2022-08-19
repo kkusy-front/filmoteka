@@ -9,21 +9,21 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
+import IconButton from '@mui/material/IconButton';
+import ClearIcon from '@mui/icons-material/Clear';
+
 
 const SearchContainer = styled(Box)(({ theme }) => ({
   position: "absolute",
   right: 0,
-  width: "70%",
+  width: "100%",
   height: "auto",
   backgroundColor: "rgba(97, 97, 97, 0.9)",
   zIndex: 999,
   boxShadow: 4,
+  [theme.breakpoints.up("md")]: {
+    width: "70%",
+  },
 }));
 
 export default function BasicTextFields() {
@@ -40,7 +40,7 @@ export default function BasicTextFields() {
   function onTextChange(e) {
     setSearch(e.target.value);
 
-    if (search.length > 0) {
+    if (search.length > 1) {
       setVisible(true);
       handleGetSearch(e.target.value);
     } else {
@@ -81,17 +81,34 @@ export default function BasicTextFields() {
           ref={ref}
           onFocus={() => handleShow(ref)}
           onBlur={() => handleShow(ref)}
+          InputProps={{
+            endAdornment: search ? (
+              <IconButton size="small" onClick={() => setSearch("")}>
+                <ClearIcon />
+              </IconButton>
+            ) : undefined
+          }}
         />
       </Box>
 
       {visible ? (
         <SearchContainer>
-          <Grid container>
+          <Grid
+            container
+            spacing={3}
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+          >
             {Object.keys(searchList).length !== 0
               ? searchList.results.slice(0, 8).map((films) => {
                   return (
-                    <Grid item xs={3} key={films.id}>
-                      <CardFilm props={films} styled={{ maxWidth: 250, mb: 3 }} imgH="200" />
+                    <Grid item xs={6} md={3} key={films.id}>
+                      <CardFilm
+                        props={films}
+                        styled={{ maxWidth: 250, mb: 3 }}
+                        imgH="200"
+                      />
                     </Grid>
                   );
                 })
