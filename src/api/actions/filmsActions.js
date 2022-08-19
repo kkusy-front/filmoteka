@@ -9,6 +9,8 @@ import {
   GET_BY_ID_ERROR
 } from "../types";
 import axios from "axios";
+import _debounce from 'lodash/debounce';
+
 
 const api = "https://api.themoviedb.org/3";
 const api_key = "0d234bc8bab43cc11d65e9ca95d40143";
@@ -47,7 +49,7 @@ export const getDiscover = () => async (dispatch) => {
   }
 };
 
-export const getSearch = (search) => async (dispatch) => {
+export const getSearch = (search) => _debounce(async (dispatch) => {
   try {
     const res = await axios.get(
       `${api}/search/movie?query=${search}&api_key=${api_key}&language=pl-PL`
@@ -62,7 +64,7 @@ export const getSearch = (search) => async (dispatch) => {
       payload: console.log(e),
     });
   }
-};
+}, 1000);
 
 export const getByID = (id) => async (dispatch) => {
   try {

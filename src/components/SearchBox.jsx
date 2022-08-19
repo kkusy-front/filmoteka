@@ -1,6 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
-import { debounce } from "lodash";
-// import { Link } from "react-router-dom";
+import React, {  useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getSearch } from "../api/actions/filmsActions";
 
@@ -36,6 +34,7 @@ export default function BasicTextFields() {
   const handleGetSearch = (query) => {
     dispatch(getSearch(query));
   };
+
 
   function onTextChange(e) {
     setSearch(e.target.value);
@@ -92,7 +91,7 @@ export default function BasicTextFields() {
       </Box>
 
       {visible ? (
-        <SearchContainer>
+        <SearchContainer className="searchContainer">
           <Grid
             container
             spacing={3}
