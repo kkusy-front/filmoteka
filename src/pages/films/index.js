@@ -45,7 +45,7 @@ export default function Films() {
         <Grid container spacing={3}>
           {allFilms.results.map((films) => {
             return (
-              <Grid item xs={10} md={3}>
+              <Grid item xs={10} md={3} key={films.id}>
                 <CardFilm props={films} styled={{ maxWidth: 300 }} imgH="400" />
               </Grid>
             );
