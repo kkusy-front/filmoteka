@@ -19,7 +19,7 @@ export default function CardFilm({ props, styled, imgH, rated }) {
   };
 
   return (
-    <Link to={`film/${props.id}`}>
+    <Link to={`/film/${props.id}`} className="cardMedia__link">
       <Card sx={styled}>
         <CardMedia
           component="img"

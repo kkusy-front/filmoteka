@@ -11,6 +11,9 @@ export const GET_SEARCH_LIST_ERROR = "GET_SEARCH_LIST_ERROR";
 export const GET_BY_ID = "GET_BY_ID";
 export const GET_BY_ID_ERROR = "GET_BY_ID_ERROR";
 
+export const GET_ALL_FILM = "GET_ALL_FILM";
+export const GET_ALL_FILM_ERROR = "GET_ALL_FILM_ERROR";
+
 
 // SERIES TYPES
 export const GET_SERIES_POPULAR = "GET_SERIES_POPULAR";

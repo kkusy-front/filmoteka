@@ -6,7 +6,9 @@ import {
   GET_SEARCH_LIST,
   GET_SEARCH_LIST_ERROR,
   GET_BY_ID,
-  GET_BY_ID_ERROR
+  GET_BY_ID_ERROR,
+  GET_ALL_FILM,
+  GET_ALL_FILM_ERROR
 } from "../types";
 import axios from "axios";
 import _debounce from 'lodash/debounce';
@@ -78,6 +80,24 @@ export const getByID = (id) => async (dispatch) => {
   } catch (e) {
     dispatch({
       type: GET_BY_ID_ERROR,
+      payload: console.log(e),
+    });
+  }
+};
+
+
+export const getAllFilms = (page) => async (dispatch) => {
+  try {
+    const res = await axios.get(
+      `${api}/movie/now_playing?api_key=${api_key}&page=${page}&language=pl-PL`
+    );
+    dispatch({
+      type: GET_ALL_FILM,
+      payload: res.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: GET_ALL_FILM_ERROR,
       payload: console.log(e),
     });
   }
