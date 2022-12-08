@@ -1,5 +1,9 @@
 # filmoteka
-Filmoteka to aplikacja napisana w React
+Filmoteka to aplikacja do wyświetlania i wyszukiwania filmów. Aplikacja pobiera dane z bazy danych https://www.themoviedb.org/.
+Wykorzystane technologie:
+1. React,
+2. Redux,
+3. MaterialUI
 
 
 
