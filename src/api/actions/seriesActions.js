@@ -2,7 +2,7 @@ import { GET_SERIES_POPULAR, GET_SERIES_POPULAR_ERROR } from "../types";
 import axios from "axios";
 
 const api = "https://api.themoviedb.org/3";
-const api_key = "0d234bc8bab43cc11d65e9ca95d40143";
+const api_key = "";
 
 export const getPopular = () => async (dispatch) => {
   try {
