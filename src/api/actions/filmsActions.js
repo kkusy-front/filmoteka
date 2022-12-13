@@ -14,8 +14,8 @@ import axios from "axios";
 import _debounce from 'lodash/debounce';
 
 
-const api = "https://api.themoviedb.org/3";
-const api_key = "0d234bc8bab43cc11d65e9ca95d40143";
+const api = "";
+const api_key = "";
 
 export const getTopRated = () => async (dispatch) => {
   try {
