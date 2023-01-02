@@ -24,7 +24,11 @@ export default function Films() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllFilms(page));
+    dispatch(getAllFilms(page)).then(window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    }));
   }, [dispatch, page]);
 
   if (allFilms.length !== 0) {
