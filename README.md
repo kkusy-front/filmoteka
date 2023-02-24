@@ -5,6 +5,9 @@ Wykorzystane technologie:
 2. Redux,
 3. MaterialUI
 
+# demo
+Demo aplikacji -> [demo](https://filmoteka.kusy-web.pl/)
+
 
 
 # Getting Started with Create React App
